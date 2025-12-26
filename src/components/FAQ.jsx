@@ -1,20 +1,23 @@
 import { useState } from "react";
 
 const faqs = [
-  ["What is GreenDrop?", "Smart recycling platform with rewards"],
-  ["How do I earn points?", "Recycle bottles and cans"],
-  ["Is it free?", "Yes, completely free"],
+  ["What is EcoBud?",
+    "EcoBud is a smart recycling and environmental awareness platform designed to help users build sustainable habits. It combines education, tracking, and rewards to encourage responsible recycling and positive environmental action."],
+  ["How do I earn points on EcoBud?",
+    "You can earn points by actively recycling items such as bottles and cans through EcoBud. Each recycling action contributes to your points, helping you track your impact while staying motivated to recycle consistently."],
+  ["Is EcoBud free to use?",
+    "Yes, EcoBud is completely free to use. All features, including educational content, recycling tracking, and rewards, are available at no cost to users."],
+  ["How does EcoBud help me learn about recycling?", "EcoBud offers curated videos and educational content to help you understand how recycling protects the environment. As you progress, you can earn certificates to showcase your learning and impact."]
 ];
 
 export default function FAQ() {
   const [active, setActive] = useState(null);
 
   return (
-    <section className="py-10 max-w-3xl mx-auto">
-      <h2 className="text-3xl text-green-700 text-center mb-6">FAQ</h2>
-
+    <section className="py-10 px-7 w-full mx-auto">
+      <h2 className="font-semibold text-3xl text-green-700 text-center mb-6">FAQ</h2>
       {faqs.map(([q, a], i) => (
-        <div key={i} className="border-b">
+        <div key={i} className="">
           <button
             onClick={() => setActive(active === i ? null : i)}
             className="w-full flex justify-between py-4 font-semibold text-green-700"
@@ -23,7 +26,7 @@ export default function FAQ() {
             <span>{active === i ? "−" : "+"}</span>
           </button>
 
-          {active === i && <p className="pb-4 text-gray-600">{a}</p>}
+          {active === i && <p className="py-4 px-10 text-gray-600 bg-gray-700 bg-neutral-900 rounded-lg">{a}</p>}
         </div>
       ))}
     </section>
