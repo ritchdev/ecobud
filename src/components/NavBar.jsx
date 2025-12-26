@@ -16,7 +16,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 w-full bg-green-300 shadow z-50 px-6 py-3 flex justify-between items-center">
+    <nav className="fixed top-0 w-full bg-black shadow z-50 px-6 py-3 flex justify-between items-center">
       <img src="/images/logo1-removebg-preview.png" className="w-14" />
 
       <div className="flex items-center gap-4" ref={panelRef}>
