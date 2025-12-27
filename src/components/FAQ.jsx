@@ -20,7 +20,7 @@ export default function FAQ() {
         <div key={i} className="border-b-1 border-neutral-500 rounded-b-lg">
           <button
             onClick={() => setActive(active === i ? null : i)}
-            className={`w-full flex justify-between py-4 font-semibold text-gray-100 ${active==i ? "rounded-t-xl" : "rounded-xl"}`}
+            className={`w-full bg-slate-600 flex justify-between py-4 font-semibold text-gray-100 ${active==i ? "rounded-t-xl" : "rounded-xl"}`}
           >
             {q}
             <span>{active === i ? "−" : "+"}</span>
