@@ -17,16 +17,16 @@ export default function FAQ() {
     <section className="py-10 px-7 w-full mx-auto">
       <h2 className="font-semibold text-3xl text-green-700 text-center mb-6">FAQ</h2>
       {faqs.map(([q, a], i) => (
-        <div key={i} className="">
+        <div key={i} className="border-b-1 border-neutral-500 rounded-b-lg">
           <button
             onClick={() => setActive(active === i ? null : i)}
-            className="w-full flex justify-between py-4 font-semibold text-green-700"
+            className={`w-full flex justify-between py-4 font-semibold text-gray-100 ${active==i ? "rounded-t-xl" : "rounded-xl"}`}
           >
             {q}
             <span>{active === i ? "−" : "+"}</span>
           </button>
 
-          {active === i && <p className="py-4 px-10 text-gray-600 bg-gray-700 bg-neutral-900 rounded-lg">{a}</p>}
+          {active === i && <p className="py-4 px-10 text-gray-300 bg-neutral-900 rounded-b-xl">{a}</p>}
         </div>
       ))}
     </section>
