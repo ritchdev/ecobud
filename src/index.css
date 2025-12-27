@@ -1,5 +1,32 @@
 @import "tailwindcss";
 
+/* ===== Global Scrollbar Styling ===== */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6ee7b7; /* emerald-300 */
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #34d399; /* emerald-400 */
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #6ee7b7 transparent;
+  scrollbar-track-color: white;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -48,6 +75,8 @@ button:hover {
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 } */
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
