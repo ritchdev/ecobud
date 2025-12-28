@@ -59,7 +59,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section>
+    <section id="faq" className="scroll-mt-22">
       <section className="bg-emerald-50 py-20">
         <div className="max-w-3xl mx-auto px-6">
           {/* Heading */}

@@ -1,17 +1,14 @@
 import {Instagram, Facebook, Youtube} from 'lucide-react'
 
-
 export default function Footer() {
   return (
-    <div className="bg-slate-800 text-white pt-8 pb-2 flex flex-col items-center justify-center">
+    <div id='footer' className="bg-slate-800 text-white pt-8 pb-2 flex flex-col items-center justify-center">
       <div className="flex items-center w-full px-8 gap-10">
         <div className="flex flex-col items-center justify-center">
           <div className='p-0 m-0'><img src="src/assets/logo.png" alt="EcoBud" className="h-18 w-auto" /></div>
           <p className="text-sm opacity-80">Recycle Today to Save Tomorrow.</p>
         </div>
         <div className="flex items-start justify-evenly flex-1 min-w-0">
-          {/* Sections In Here */}
-          {/*Quick Links, Contact & Support, Our Socials*/}
           <div className="flex flex-col items-start justify-center gap-2">
             <h4 className="font-semibold text-xl text-lime-400 mb-1">Quick Links</h4>
             <a href="" >Home</a>

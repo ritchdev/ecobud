@@ -25,6 +25,7 @@ html {
   scrollbar-width: thin;
   scrollbar-color: #6ee7b7 transparent;
   scrollbar-track-color: white;
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -52,10 +53,10 @@ body {
   min-height: 100vh;
 }
 
-h1 {
+/* h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
+} */
 
 button {
   /* border-radius: 8px; */
