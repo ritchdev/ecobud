@@ -40,8 +40,8 @@ export default function Footer() {
         <p className="text-xs p-0 m-0">©</p>
         <p className="text-xs p-0 m-0">2025</p>
         <span className='flex'> 
-          <p className="text-xs p-0 m-0 text-emerald-800">Eco</p>
-          <p className="text-xs p-0 m-0 text-lime-400">Bud</p>
+          <p className="text-xs p-0 m-0 font-semibold text-emerald-800">Eco</p>
+          <p className="text-xs p-0 m-0 font-semibold text-lime-400">Bud</p>
         </span>
       </span>
     </div>
