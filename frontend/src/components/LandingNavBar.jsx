@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-export default function NavBar() {
+export default function LandingNavBar() {
   const navigate = useNavigate()
-
+  
   return (
     <nav className="fixed left-2 top-2 w-[99dvw] flex items-center justify-between mb-0 px-10 py-2 bg-gray-100/80 border-white border-1 rounded-xl z-2">
       {/* Logo */}
@@ -24,7 +24,7 @@ export default function NavBar() {
         <button className="w-[7dvw] p-0 h-min text-emerald-600 rounded-lg bg-white shadow-md hover:shadow-lg" onClick={() => navigate("/login")}>
           Log In
         </button>
-        <button className="w-[7dvw] p-0 bg-emerald-600 text-white rounded-lg shadow-lg hover:shadow-xl">
+        <button className="w-[7dvw] p-0 bg-emerald-600 text-white rounded-lg shadow-lg hover:shadow-xl" onClick={() => navigate("/register")}>
           Sign Up
         </button>
       </div>
