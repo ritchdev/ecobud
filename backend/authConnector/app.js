@@ -8,7 +8,7 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBf9nFvgf76rpYkTxRK3iOo5aMMQI0B0GI",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "ecobud-45a05.firebaseapp.com",
   projectId: "ecobud-45a05",
   storageBucket: "ecobud-45a05.firebasestorage.app",
