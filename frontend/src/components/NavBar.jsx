@@ -1,18 +1,41 @@
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
+export default function Navbar() {
   return (
-    <nav className="bg-white shadow-sm px-6 py-4 flex justify-between items-center">
-      <div className="flex items-center gap-6">
-        <img src="/logo.png" className="h-8" />
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/learn">Learn</Link>
-        <Link to="/contribute">Contribute</Link>
-      </div>
-      <div className="flex items-center gap-4">
-        <button>🔔</button>
-        <button>👤</button>
+    <nav className="border-b w-screen border-emerald-200 bg-white m-0 p-0">
+      <div className=" px-10 h-16 flex items-center justify-center">
+        <div className="flex items-center justify-between gap-5 w-full">
+          <div>
+            <img src="/src/assets/logo.png" alt="EcoBud" className="h-11 w-auto translate-y-[-4px]"/>
+          </div>
+
+          <div className="flex items-center gap-5">
+            <NavItem to="/dashboard" active>
+              Dashboard
+            </NavItem>
+            <NavItem to="/learn">Learn</NavItem>
+            <NavItem to="/contribute">Contribute</NavItem>
+            <NavItem to="/certificates">Certificates</NavItem>
+            <NavItem to="/profile">Profile</NavItem>
+          </div>
+        </div>
       </div>
     </nav>
+  );
+}
+
+
+function NavItem({ to, children, active }) {
+  return (
+    <Link
+      to={to}
+      className={`text-sm font-medium ${
+        active
+          ? "text-emerald-700"
+          : "text-gray-600 hover:text-emerald-700"
+      }`}
+    >
+      {children}
+    </Link>
   );
 }

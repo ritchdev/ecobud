@@ -24,9 +24,9 @@ app.get('/', (req, res) => {
 });
 
 // Mount routes
-app.use('/api/auth', authRoutes);
-app.use('/api/reports', reportRoutes);
-app.use('/api/market', marketRoutes);
-app.use('/api/gamification', gamificationRoutes);
+app.use('/auth', authRoutes);
+app.use('/reports', reportRoutes);
+app.use('/market', marketRoutes);
+app.use('/gamification', gamificationRoutes);
 
 module.exports = app;

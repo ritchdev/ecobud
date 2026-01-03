@@ -21,10 +21,10 @@ export default function LandingNavBar() {
 
       {/* Actions */}
       <div className="flex gap-3 p-20px">
-        <button className="w-[7dvw] p-0 h-min text-emerald-600 rounded-lg bg-white shadow-md hover:shadow-lg" onClick={() => navigate("/login")}>
+        <button className="w-[7dvw] px-[0.6em] py-[0.6em] p-0 h-min text-emerald-600 rounded-lg bg-white shadow-md hover:shadow-lg" onClick={() => navigate("/login")}>
           Log In
         </button>
-        <button className="w-[7dvw] p-0 bg-emerald-600 text-white rounded-lg shadow-lg hover:shadow-xl" onClick={() => navigate("/register")}>
+        <button className="w-[7dvw] px-[0.6em] py-[0.6em] p-0 bg-emerald-600 text-white rounded-lg shadow-lg hover:shadow-xl" onClick={() => navigate("/register")}>
           Sign Up
         </button>
       </div>
