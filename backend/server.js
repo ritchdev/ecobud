@@ -1,13 +1,13 @@
-require('dotenv').config();
-const connectDB = require('./src/config/db');
-const app = require('./src/app');
+const express = require("express");
+const app = express();
+const { protect } = require("./src/middleware/authMiddleware");
 
-const PORT = process.env.PORT || 5000;
+app.use(express.json());
 
-// Connect to Database
-connectDB();
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Access the API at: http://localhost:${PORT}`);
+// Protected route example
+app.get("/api/profile", protect, (req, res) => {
+  // req.user is set by protect middleware
+  res.json({ email: req.user.email, uid: req.user.uid });
 });
+
+app.listen(5000, () => console.log("Server running on port 5000"));
