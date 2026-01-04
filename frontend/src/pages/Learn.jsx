@@ -1,10 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/NavBar";
 
-/* =======================
-   MAIN LEARN PAGE
-======================= */
-
 export default function Learn() {
   return (
     <div className="w-screen bg-emerald-50">
@@ -75,8 +71,13 @@ function LearnSection({ title, description, }) {
 
       {/* Footer */}
       <div className="border-t border-emerald-200 p-6 flex justify-end">
-        <button disabled={!allCompleted} className={`border px-5 py-2 rounded-lg text-sm font-medium ${allCompleted ? "border-emerald-600 text-emerald-700 hover:bg-emerald-50" : "border-gray-300 text-gray-400 cursor-not-allowed"
-          } `}>
+        <button 
+        disabled={!allCompleted} 
+        className={`border px-5 py-2 rounded-lg text-sm font-medium ${allCompleted ? "border-emerald-600 text-emerald-700 hover:bg-emerald-50" : "border-gray-300 text-gray-400 cursor-not-allowed"} `}
+        onClick={() => {
+          //Open Quiz
+        }}
+        >
           Take The Test
         </button>
       </div>

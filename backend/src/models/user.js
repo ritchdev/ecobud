@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
       type: String,
       enum: [
         "RECYCLING_BASICS",
-        "PLASTIC_&_EWASTE,
+        "PLASTIC_&_EWASTE",
         "SUSTAINABLE LIVING"
       ]
     }
