@@ -7,6 +7,8 @@ const authRoutes = require('./routes/authRoutes');
 const reportRoutes = require('./routes/reportRoutes');
 const marketRoutes = require('./routes/marketRoutes');
 const gamificationRoutes = require('./routes/gamificationRoutes');
+const testRoutes = require('./routes/testRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -28,5 +30,7 @@ app.use('/auth', authRoutes);
 app.use('/reports', reportRoutes);
 app.use('/market', marketRoutes);
 app.use('/gamification', gamificationRoutes);
+app.use('/user', userRoutes)
+app.use('/test', testRoutes)
 
 module.exports = app;
