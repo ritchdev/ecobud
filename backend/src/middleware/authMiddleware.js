@@ -1,4 +1,4 @@
-const admin = require('../config/firebase');
+const firebaseAdmin = require('../config/firebase');
 const User = require('../models/user');
 
 const protect = async (req, res, next) => {
@@ -6,7 +6,7 @@ const protect = async (req, res, next) => {
 
   if (
     req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
+    req.headers.authorization.startsWith('Bearer ')
   ) {
     token = req.headers.authorization.split(' ')[1];
   }
@@ -16,42 +16,39 @@ const protect = async (req, res, next) => {
   }
 
   try {
-    // 1. Verify Firebase Token
-    const decodedToken = await admin.auth().verifyIdToken(token);
-    const { email, uid } = decodedToken;
+    // 1. Verify Firebase ID Token
+    const decodedToken = await firebaseAdmin.auth().verifyIdToken(token);
+    const { uid, email, name } = decodedToken;
 
-    // 2. Find or Create User in MongoDB
-    // We link by email. 
-    let user = await User.findOne({ email });
+    // 2. Find or Create User by Firebase UID (NOT email)
+    let user = await User.findOne({ firebaseUid: uid });
 
     if (!user) {
-        // Optional: Auto-create user if they don't exist in our DB yet
-        // For now, we will assume they might need to register via our API first 
-        // OR we can just create them on the fly (Sync). 
-        // Let's create on the fly for better UX.
-        user = await User.create({
-            name: decodedToken.name || 'Firebase User',
-            email: email,
-            password: 'firebase-linked-account', // Dummy password
-            role: 'citizen'
-        });
+      user = await User.create({
+        firebaseUid: uid,
+        email,
+        name: name || 'Firebase User',
+        role: 'citizen',
+      });
     }
 
+    // 3. Attach user to request
     req.user = user;
     req.firebaseUid = uid;
-    next();
 
+    next();
   } catch (error) {
-    console.error('Firebase Auth Error:', error);
-    res.status(401).json({ message: 'Not authorized, token failed' });
+    console.error('Firebase Auth Error:', error.message);
+    return res.status(401).json({ message: 'Not authorized, token failed' });
   }
 };
 
+// Role-based access (this part is fine)
 const adminMiddleware = (req, res, next) => {
-  if (req.user && req.user.role === 'admin') {
+  if (req.user?.role === 'admin') {
     next();
   } else {
-    res.status(401).json({ message: 'Not authorized as an admin' });
+    res.status(403).json({ message: 'Admin access required' });
   }
 };
 

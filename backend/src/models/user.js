@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
+  firebaseUid: {
+    type: String,
+    required: true,
+    unique: true
+  },
   name: {
     type: String,
     required: true,
@@ -11,26 +15,10 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  role: {
-    type: String,
-    enum: ['citizen', 'admin'],
-    default: 'citizen',
-  },
-  points: {
-    type: Number,
-    default: 0,
-  },
-  badges: [{
-    type: String
-  }],
-  completedLearningItems:[
+  completedLearningItems: [
     {
-    type:mongoose.Schema.Types.ObjectId,
-    ref: "LearningItem",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "LearningItem",
     }
   ],
   certicates: [
@@ -49,21 +37,6 @@ const userSchema = new mongoose.Schema({
   },
 }, {
   timestamps: true,
-});
-
-// Match user entered password to hashed password in database
-userSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
-};
-
-// Encrypt password using bcrypt
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) {
-    next();
-  }
-
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
 });
 
 const User = mongoose.model('User', userSchema);
