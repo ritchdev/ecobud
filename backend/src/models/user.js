@@ -27,6 +27,22 @@ const userSchema = new mongoose.Schema({
   badges: [{
     type: String
   }],
+  completedLearningItems:[
+    {
+    type:mongoose.Schema.Types.ObjectId,
+    ref: "LearningItem",
+    }
+  ],
+  certicates: [
+    {
+      type: String,
+      enum: [
+        "RECYCLING_BASICS",
+        "PLASTIC_&_EWASTE,
+        "SUSTAINABLE LIVING"
+      ]
+    }
+  ],
   completedTraining: {
     type: Boolean,
     default: false,
