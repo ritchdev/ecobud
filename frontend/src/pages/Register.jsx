@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../auth/firebase.auth.js"
-
+import registerBg from "../assets/loginbg2.png"
 
 export default function Register() {
     const navigate = useNavigate()
@@ -21,7 +21,7 @@ export default function Register() {
     }
 
     return (
-        <div className="m-0 p-0 h-screen w-screen bg-[url('src/assets/loginbg2.png')] bg-no-repeat bg-cover bg-bottom">
+        <div className="m-0 p-0 h-screen w-screen bg-no-repeat bg-cover bg-bottom" style={{ backgroundImage: `url(${registerBg})`}}>
             <div className="bg-black/40 h-full w-full flex items-center justify-center from-emerald-50 to-emerald-400 px-4">
                 <div className="w-full max-w-md bg-emerald-50/60 rounded-2xl shadow-lg p-8 border-1 border-emerald-600">
 

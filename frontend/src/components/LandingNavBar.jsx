@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png"
 
 export default function LandingNavBar() {
   const navigate = useNavigate()
@@ -8,7 +9,7 @@ export default function LandingNavBar() {
     <nav className="fixed left-2 top-2 w-[99dvw] flex items-center justify-between mb-0 px-10 py-2 bg-gray-100/80 border-white border-1 rounded-xl z-2">
       {/* Logo */}
       <div className="flex items-center gap-2">
-        <img src="src/assets/logo.png" alt="EcoBud" className="h-11 w-auto translate-y-[-4px]" />
+        <img src={logo} alt="EcoBud" className="h-11 w-auto translate-y-[-4px]" />
       </div>
 
       {/* Links */}

@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../auth/firebase.auth.js"
+import loginBg from "../assets/loginbg1.jpg"
 
 function LoginInputs() {
     return (
@@ -70,7 +71,7 @@ export default function Login() {
 
 
     return (
-        <div className="m-0 p-0 h-screen w-screen bg-[url('src/assets/loginbg1.jpg')] bg-no-repeat bg-cover bg-[position:center_10%]">
+        <div className="m-0 p-0 h-screen w-screen bg-no-repeat bg-cover bg-[position:center_10%]" style={{ backgroundImage: `url(${loginBg})`}}>
             <div className="bg-black/30 h-full w-full flex items-center justify-center from-emerald-50 to-emerald-400 px-4">
                 <div className="w-full max-w-md bg-emerald-50/60 rounded-2xl shadow-lg p-8 border-1 border-emerald-600">
                     {/* Logo */}
