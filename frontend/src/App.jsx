@@ -4,8 +4,9 @@ import LandingPage from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Test from "./pages/Test";
 import Learn from "./pages/Learn";
+import Quiz from "./pages/Quiz"
+import Test from "./pages/Test";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <Route path="/dashboard" element={<Dashboard />}></Route>
       <Route path="/register" element={<Register />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/quiz/:section" element={<Quiz />}></Route>
       <Route path="/test" element={<Test />}></Route>
     </Routes>
 

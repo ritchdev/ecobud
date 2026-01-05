@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 const learningItemSchema = new mongoose.Schema({
   title: {
     type: String,

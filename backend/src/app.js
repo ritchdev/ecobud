@@ -6,6 +6,7 @@ import path from 'path'
 import { authRouter } from './routes/authRoutes.js'
 import { userRouter } from './routes/userRoutes.js'
 import { testRouter } from './routes/testRoutes.js'
+import { learningRouter } from "./routes/learningRoutes.js"
 
 const app = express();
 
@@ -26,5 +27,6 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter)
 app.use('/api/test', testRouter)
+app.use('/api/learning', learningRouter)
 
 export { app }

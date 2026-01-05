@@ -116,7 +116,7 @@ export default function Dashboard() {
           },
         });
 
-        if (!res.ok) throw new Error("Backend error");
+        // if (!res.ok) throw new Error("Backend error");
 
         // const data = await res.json();
         console.log(res);
