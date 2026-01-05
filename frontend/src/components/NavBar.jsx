@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png"
 
 export default function Navbar() {
   return (
@@ -6,7 +7,7 @@ export default function Navbar() {
       <div className=" px-10 h-16 flex items-center justify-center">
         <div className="flex items-center justify-between gap-5 w-full">
           <div>
-            <img src="/src/assets/logo.png" alt="EcoBud" className="h-11 w-auto translate-y-[-4px]"/>
+            <img src={logo} alt="EcoBud" className="h-11 w-auto translate-y-[-4px]"/>
           </div>
 
           <div className="flex items-center gap-5">
