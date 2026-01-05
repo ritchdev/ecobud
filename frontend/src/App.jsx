@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
@@ -16,6 +17,6 @@ export default function App() {
       <Route path="/login" element={<Login />}></Route>
       <Route path="/test" element={<Test />}></Route>
     </Routes>
-    
+
   );
 }

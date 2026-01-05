@@ -3,31 +3,6 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../auth/firebase.auth.js"
 
-const navigate = useNavigate()
-
-const handleLogin = async (e) => {
-    e.preventDefault()
-
-    const email = e.target.email.value
-    const password = e.target.password.value
-
-    try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-        const token = userCredential.user.getIdToken()
-
-        await fetch("/users/profile", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-
-        //Redirect user to dashboard
-        navigate("/dashboard")
-    } catch (error) {
-        console.log(error)
-    }
-}
-
 function LoginInputs() {
     return (
         <>
@@ -76,6 +51,20 @@ function ResetInputs() {
 
 export default function Login() {
     const [pageForm, setPageForm] = useState("login")   //'login' State for normal login and 'reset' State for Reset Credentials
+    const navigate = useNavigate()
+
+
+    const handleLogin = async (e) => {
+        e.preventDefault()
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            navigate("/dashboard")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     return (
         <div className="m-0 p-0 h-screen w-screen bg-[url('src/assets/loginbg1.jpg')] bg-no-repeat bg-cover bg-[position:center_10%]">

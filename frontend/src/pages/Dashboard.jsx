@@ -91,6 +91,8 @@ export default function Dashboard() {
 */}
 
 import { useEffect, useState } from "react";
+import { auth } from "../auth/firebase.auth.js";
+import { onAuthStateChanged } from "firebase/auth";
 import { Link } from "react-router-dom";
 import Navbar from "../components/NavBar";
 
@@ -99,6 +101,34 @@ import Navbar from "../components/NavBar";
 ======================= */
 
 export default function Dashboard() {
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (!firebaseUser) {
+        return;
+      }
+
+      try {
+        const token = await firebaseUser.getIdToken();
+
+        const res = await fetch("/api/user/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.ok) throw new Error("Backend error");
+
+        // const data = await res.json();
+        console.log(res);
+
+      } catch (err) {
+        console.error("Dashboard sync failed:", err);
+      }
+    });
+
+    return unsub;
+  }, []);
+
   return (
     <div className="min-h-screen w-screen bg-white">
       <Navbar />
@@ -204,8 +234,8 @@ function Certificate({ title, locked }) {
   return (
     <div
       className={`border rounded-lg p-4 text-center text-sm ${locked
-          ? "border-gray-300 text-gray-400"
-          : "border-emerald-300 text-emerald-700"
+        ? "border-gray-300 text-gray-400"
+        : "border-emerald-300 text-emerald-700"
         }`}
     >
       {locked ? "Locked" : title}

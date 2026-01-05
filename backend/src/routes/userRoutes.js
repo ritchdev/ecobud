@@ -1,16 +1,13 @@
-const express = require("express")
-const protect = require('../middleware/authMiddleware')
-const {
-    getUserProfile,
-    toggleLearningItemStatus,
-    awardCertificate
-} = require("../controllers/userController")
+import express from "express"
+import { protect } from "../middleware/authMiddleware.js"
+import { getUserProfile, toggleLearningItemStatus, awardCertificate } from "../controllers/userController.js"
 
 const userRouter = express.Router()
 
+userRouter.get('/', (req, res) => res.send("At user router"))
 userRouter.get('/profile', protect, getUserProfile)
-router.post("/learning/toggle", protect, toggleLearningItemStatus);
-router.post("/certificates/award", protect, awardCertificate);
+userRouter.post("/learning/toggle", protect, toggleLearningItemStatus);
+userRouter.post("/certificates/award", protect, awardCertificate);
 
 
-module.exports = userRouter
+export { userRouter }

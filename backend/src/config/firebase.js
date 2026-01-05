@@ -1,22 +1,27 @@
-const admin = require('firebase-admin');
-const { default: ApiError } = require('../utils/ApiError');
+import firebaseAdmin from 'firebase-admin'
+import ApiError from "../utils/ApiError.js"
+import fs from "fs";
+import path from "path";
 
 let initialised = false
 
 try {
   // You must download this file from Firebase Console -> Project Settings -> Service Accounts
-  const serviceAccount = require('../serviceAccountKey.json');
-  
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+  const serviceAccountPath = path.resolve("./src/serviceAccountKey.json")
+  const raw = fs.readFileSync(serviceAccountPath, "utf-8")
+  const serviceAccount = JSON.parse(raw)
+
+
+  firebaseAdmin.initializeApp({
+    credential: firebaseAdmin.credential.cert(serviceAccount)
   });
   console.log("Firebase Admin Initialized");
   initialised = true
 
 } catch (error) {
   throw new ApiError(
-    500, "Firebase Admin NOT Initialised due to missing or invalid serviceAccountKey"
+    500, error || "Firebase Admin NOT Initialised due to missing or invalid serviceAccountKey"
   )
 }
 
-module.exports = { admin, initialised }
+export { firebaseAdmin, initialised }

@@ -1,9 +1,7 @@
-const express = require('express');
+import express from "express"
 const testRouter = express.Router();
 
-testRouter.post('/', (req, res) => {console.log(req.body); res.status(200)});
-testRouter.get('/', (req, res) => res.json({
-    gotHere: true
-}));
+testRouter.post('/', (req, res) => { console.log(req.body); res.status(200) });
+testRouter.get('/', (req, res) => console.log("Arrived at test"))
 
-module.exports = testRouter;
+export { testRouter }

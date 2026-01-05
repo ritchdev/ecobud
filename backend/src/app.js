@@ -1,14 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
+import express from "express"
+import cors from 'cors'
+import path from 'path'
 
 // Import routes
-const authRoutes = require('./routes/authRoutes');
-const reportRoutes = require('./routes/reportRoutes');
-const marketRoutes = require('./routes/marketRoutes');
-const gamificationRoutes = require('./routes/gamificationRoutes');
-const testRoutes = require('./routes/testRoutes');
-const userRoutes = require('./routes/userRoutes');
+import { authRouter } from './routes/authRoutes.js'
+import { userRouter } from './routes/userRoutes.js'
+import { testRouter } from './routes/testRoutes.js'
 
 const app = express();
 
@@ -18,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files (uploaded images) - Optional for now
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+// app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Routes
 app.get('/', (req, res) => {
@@ -26,11 +23,8 @@ app.get('/', (req, res) => {
 });
 
 // Mount routes
-app.use('/auth', authRoutes);
-app.use('/reports', reportRoutes);
-app.use('/market', marketRoutes);
-app.use('/gamification', gamificationRoutes);
-app.use('/user', userRoutes)
-app.use('/test', testRoutes)
+app.use('/api/auth', authRouter);
+app.use('/api/user', userRouter)
+app.use('/api/test', testRouter)
 
-module.exports = app;
+export { app }

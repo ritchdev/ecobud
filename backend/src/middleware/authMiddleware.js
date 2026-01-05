@@ -1,5 +1,5 @@
-const firebaseAdmin = require('../config/firebase');
-const User = require('../models/user');
+import { firebaseAdmin } from "../config/firebase.js"
+import { User } from "../models/user.js";
 
 const protect = async (req, res, next) => {
   let token;
@@ -51,4 +51,4 @@ const protect = async (req, res, next) => {
 //   }
 // };
 
-module.exports = { protect };
+export { protect }
