@@ -1,15 +1,43 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../auth/firebase.auth.js"
+
+const navigate = useNavigate()
+
+const handleLogin = async (e) => {
+    e.preventDefault()
+
+    const email = e.target.email.value
+    const password = e.target.password.value
+
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+        const token = userCredential.user.getIdToken()
+
+        await fetch("/users/profile", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        //Redirect user to dashboard
+        navigate("/dashboard")
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 function LoginInputs() {
     return (
         <>
             <label className="block text-sm mb-1">
-                Username
+                Email
             </label>
             <input
-                type="text"
-                placeholder="greenophile"
+                name="email"
+                type="email"
+                placeholder="you@ecobud.com"
                 className="w-full rounded-lg border border-gray-300 px-4 py-2
                            focus:outline-none focus:ring-2 focus:ring-emerald-400"
                 required
@@ -18,6 +46,7 @@ function LoginInputs() {
                 Password
             </label>
             <input
+                name="password"
                 type="password"
                 placeholder="••••••••"
                 className="w-full rounded-lg border border-gray-300 px-4 py-2
@@ -68,7 +97,7 @@ export default function Login() {
                         {pageForm === 'login' ? "Log in to continue your eco journey" : "Enter the email linked with your EcoBud account to reset your credentials"}
                     </p>
                     {/* Form */}
-                    <form className="space-y-4 text-gray-700">
+                    <form className="space-y-4 text-gray-700" onSubmit={handleLogin}>
                         {pageForm === 'login' && <LoginInputs />}
                         {pageForm === 'reset' && <ResetInputs />}
 
@@ -94,9 +123,9 @@ export default function Login() {
                         </Link>
                     </p>
                     <p className="text-center text-sm mt-2">
-                        <span 
+                        <span
                             className="text-emerald-600 font-semibold hover:underline cursor-pointer"
-                            onClick={() => {pageForm === 'login' ? setPageForm('reset') : setPageForm('login')}}
+                            onClick={() => { pageForm === 'login' ? setPageForm('reset') : setPageForm('login') }}
                         >
                             {pageForm === 'login' ? "I forgot my credentials" : "Back to Log In"}
                         </span>
@@ -106,3 +135,4 @@ export default function Login() {
         </div>
     );
 }
+

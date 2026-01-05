@@ -1,4 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../auth/firebase.auth.js"
+
+const navigate = useNavigate()
+
+const handleRegister = async (e) => {
+    e.preventDefault()
+
+    const email = e.target.email.value
+    const password = e.target.password.value
+
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+        const token = userCredential.user.getIdToken()
+
+        await fetch("/users/profile", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        //Redirect user to dashboard
+        navigate("/dashboard")
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 export default function Register() {
     return (
@@ -22,11 +50,12 @@ export default function Register() {
                         Register Now and Begin your Green Journey
                     </p>
                     {/* Form */}
-                    <form className="space-y-4 text-gray-700">
+                    <form className="space-y-4 text-gray-700" onSubmit={handleRegister}>
                         <label className="block text-sm mb-1">
                             Email
                         </label>
                         <input
+                            name="email"
                             type="email"
                             placeholder="you@ecobud.com"
                             className="w-full rounded-lg border border-gray-300 px-4 py-2
@@ -37,6 +66,7 @@ export default function Register() {
                             Username
                         </label>
                         <input
+                            name="username"
                             type="text"
                             placeholder="greenophile"
                             className="w-full rounded-lg border border-gray-300 px-4 py-2
@@ -47,6 +77,7 @@ export default function Register() {
                             Password
                         </label>
                         <input
+                            name="password"
                             type="password"
                             placeholder="••••••••"
                             className="w-full rounded-lg border border-gray-300 px-4 py-2
