@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
       ref: "LearningItem",
     }
   ],
-  certicates: [
+  certificates: [
     {
       type: String,
       enum: [
@@ -31,10 +31,6 @@ const userSchema = new mongoose.Schema({
       ]
     }
   ],
-  completedTraining: {
-    type: Boolean,
-    default: false,
-  },
 }, {
   timestamps: true,
 });
