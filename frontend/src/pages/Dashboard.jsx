@@ -18,7 +18,7 @@ export default function Dashboard() {
       try {
         const token = await firebaseUser.getIdToken();
 
-        const res = await fetch("/api/user/profile", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/user/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

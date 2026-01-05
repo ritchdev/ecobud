@@ -29,14 +29,14 @@ export default function Learn() {
         const token = await user.getIdToken();
 
         // Fetch learning items
-        const itemsRes = await fetch("/api/learning", {
+        const itemsRes = await fetch(`${import.meta.env.VITE_API_URL}/api/learning`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const itemsData = await itemsRes.json();
         setItems(itemsData);
 
         // Fetch user profile (certificates)  ✅ NEW
-        const profileRes = await fetch("/api/user/profile", {
+        const profileRes = await fetch(`${import.meta.env.VITE_API_URL}/api/user/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const profileData = await profileRes.json();
@@ -56,7 +56,7 @@ export default function Learn() {
     try {
       const token = await auth.currentUser.getIdToken();
 
-      await fetch("/api/learning/toggle", {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/learning/toggle`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

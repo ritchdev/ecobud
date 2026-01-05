@@ -50,7 +50,7 @@ export default function Quiz() {
 
             const token = await auth.currentUser.getIdToken();
 
-            await fetch("/api/user/certificates/award", {
+            await fetch(`${import.meta.env.VITE_API_URL}/api/user/certificates/award`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
