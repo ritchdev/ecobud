@@ -27,8 +27,7 @@ const protect = async (req, res, next) => {
       user = await User.create({
         firebaseUid: uid,
         email,
-        name: name || 'Firebase User',
-        role: 'citizen',
+        name: name || `user${Math.random()}`,
       });
     }
 
@@ -43,13 +42,13 @@ const protect = async (req, res, next) => {
   }
 };
 
-// Role-based access (this part is fine)
-const adminMiddleware = (req, res, next) => {
-  if (req.user?.role === 'admin') {
-    next();
-  } else {
-    res.status(403).json({ message: 'Admin access required' });
-  }
-};
+// // Role-based access (this part is fine)
+// const adminMiddleware = (req, res, next) => {
+//   if (req.user?.role === 'admin') {
+//     next();
+//   } else {
+//     res.status(403).json({ message: 'Admin access required' });
+//   }
+// };
 
-module.exports = { protect, admin: adminMiddleware };
+module.exports = { protect };
