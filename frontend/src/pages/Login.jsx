@@ -3,6 +3,8 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../auth/firebase.auth.js"
 import loginBg from "../assets/loginbg1.jpg"
+import logo from "../assets/logo.png"
+
 
 function LoginInputs() {
     return (
@@ -77,7 +79,7 @@ export default function Login() {
                     {/* Logo */}
                     <div className="flex justify-center">
                         <img
-                            src="src/assets/logo.png"
+                            src={logo}
                             alt="EcoBud"
                             className="h-12 w-auto"
                         />

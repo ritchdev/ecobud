@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom"
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../auth/firebase.auth.js"
 import registerBg from "../assets/loginbg2.png"
+import logo from "../assets/logo.png"
+
 
 export default function Register() {
     const navigate = useNavigate()
@@ -28,7 +30,7 @@ export default function Register() {
                     {/* Logo */}
                     <div className="flex justify-center">
                         <img
-                            src="src/assets/logo.png"
+                            src={logo}
                             alt="EcoBud"
                             className="h-12 w-auto"
                         />
