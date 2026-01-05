@@ -171,7 +171,8 @@ function LearnSection({ title, description, items, certificates, onToggle }) {
             }`}
           onClick={() => {
             if (!canTakeTest) return;
-            navigate(`/quiz/${encodeURIComponent(title)}`);
+            let uriComp = title === "Recycling Basics" ? "recycling-basics" : title === "Sustainable Living" ? "sustainable-living" : "plastic-and-e-waste"
+            navigate(`/quiz/${encodeURIComponent(uriComp)}`);
           }}
         >
           {alreadyCertified ? "Certificate Earned" : "Take The Test"}

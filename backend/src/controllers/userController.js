@@ -10,6 +10,7 @@ const getUserProfile = async (req, res) => {
             id: user._id,
             name: user.name,
             email: user.email,
+            loginStreak: user.loginStreak,
             completedLearningItems: user.completedLearningItems,
             certificates: user.certificates,
             completedTraining: user.completedTraining,

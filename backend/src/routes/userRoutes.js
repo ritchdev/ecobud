@@ -4,7 +4,6 @@ import { getUserProfile, awardCertificate } from "../controllers/userController.
 
 const userRouter = express.Router()
 
-userRouter.get('/', (req, res) => res.send("At user router"))
 userRouter.get('/profile', protect, getUserProfile)
 userRouter.post("/certificates/award", protect, awardCertificate);
 

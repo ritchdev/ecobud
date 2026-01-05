@@ -15,7 +15,6 @@ export default function Navbar() {
             </NavItem>
             <NavItem to="/learn">Learn</NavItem>
             <NavItem to="/contribute">Contribute</NavItem>
-            <NavItem to="/certificates">Certificates</NavItem>
             <NavItem to="/profile">Profile</NavItem>
           </div>
         </div>

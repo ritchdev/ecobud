@@ -28,10 +28,14 @@ const userSchema = new mongoose.Schema({
       enum: [
         "RECYCLING_BASICS",
         "PLASTIC_&_EWASTE",
-        "SUSTAINABLE LIVING"
+        "SUSTAINABLE_LIVING"
       ]
     }
   ],
+  loginStreak: {
+    type: Number,
+    default: 0
+  }
 }, {
   timestamps: true,
 });
