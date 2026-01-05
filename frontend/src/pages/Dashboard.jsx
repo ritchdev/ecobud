@@ -9,7 +9,7 @@ import Navbar from "../components/NavBar";
 
 export default function Dashboard() {
   const [certificates, setCertificates] = useState([]);
-  const [loginStreak, setloginStreak] = useState(0)
+  const [loginStreak, setLoginStreak] = useState(0)
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -29,7 +29,7 @@ export default function Dashboard() {
         const data = await res.json();
 
         setCertificates(data.certificates || []);
-        setStreak(data.loginStreak ?? 0)
+        setLoginStreak(data.loginStreak ?? 0)
 
       } catch (err) {
         console.error("Dashboard sync failed:", err);
